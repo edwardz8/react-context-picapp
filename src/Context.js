@@ -16,8 +16,7 @@ function ContextProvider({children}) {
     function toggleFavorite(id) {
         const updatedArr = allPhotos.map(photo => {
             if (photo.id === id) {
-                console.log(id)
-                console.log(!photo.isFavorite)
+                // console.log(id)
                 return {
                     ...photo,
                     isFavorite: !photo.isFavorite
@@ -37,8 +36,12 @@ function ContextProvider({children}) {
         setCartItems(prevItems => prevItems.filter(item => item.id !== id))
     }
 
+    function emptyCart() {
+        setCartItems([])
+    }
+
     return (
-        <Context.Provider value={{ allPhotos, toggleFavorite, cartItems, addToCart, removeFromCart }}>
+        <Context.Provider value={{ allPhotos, toggleFavorite, cartItems, addToCart, removeFromCart, emptyCart }}>
             { children }
         </Context.Provider>
     )
